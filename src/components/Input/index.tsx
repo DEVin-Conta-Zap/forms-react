@@ -7,11 +7,11 @@ export type InputProps = {
   errorMessage?: string;
 } & InputHTMLAttributes<HTMLInputElement>
 
-const Input = ({label, errorMessage, ...otherProps } : InputProps) => {
+const Input = ({label, errorMessage, disabled, ...otherProps } : InputProps) => {
   return (
-    <S.InputWrapper>
+    <S.InputWrapper error={!!errorMessage} disabled={disabled} >
       <S.DescriptionInput>{label}</S.DescriptionInput>
-      <S.InputText errorMessage={errorMessage} {...otherProps} />
+      <S.InputText {...otherProps} />
       <S.ErrorMessage>{errorMessage}</S.ErrorMessage>
     </S.InputWrapper>
   )
