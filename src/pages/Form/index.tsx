@@ -4,23 +4,28 @@ import Input from '../../components/Input';
 
 import * as S from './styles'
 
+type ErrosProps = {
+  email?: string;
+  password?: string;
+}
+
 const Form = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('')
-  const [erros, setErros] = useState<string[]>([]);
+  const [erros, setErros] = useState<ErrosProps>({});
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    let currentErros: string[] = [];
+    let currentErros: ErrosProps = {};
 
     if(!email) {
-      currentErros = [...currentErros, 'E-mail é obrigatório']
+      currentErros.email = 'E-mail é obrigatório';
     }
 
     if(!password) {
-      currentErros.push('Senha é obrigatória')
+      currentErros.password = 'Senha é obrigatória';
     }
 
     setErros(currentErros);
@@ -38,21 +43,21 @@ const Form = () => {
       <br />
 
       <S.FormWrapper onSubmit={handleSubmit}>
-        {erros.map(item => <p key={item}>{item}</p>)}
         
         <Input
           label="E-mail"
           value={email}
           onChange={event => setEmail(event.target.value)} 
           placeholder="Digite seu email"
-           />
+          errorMessage={erros.email}/>
 
         <Input 
           label='Senha'
           type="password"
           value={password}
           onChange={event => setPassword(event.target.value)}
-          placeholder='Digite sua senha' />
+          placeholder='Digite sua senha'
+          errorMessage={erros.password} />
 
         <button type='submit'>Enviar</button>
       </S.FormWrapper>

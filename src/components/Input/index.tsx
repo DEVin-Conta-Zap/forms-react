@@ -2,15 +2,17 @@ import { InputHTMLAttributes } from 'react';
 
 import * as S from './styles'
 
-type InputProps = {
+export type InputProps = {
   label: string;
+  errorMessage?: string;
 } & InputHTMLAttributes<HTMLInputElement>
 
-const Input = ({label, ...otherProps } : InputProps) => {
+const Input = ({label, errorMessage, ...otherProps } : InputProps) => {
   return (
     <S.InputWrapper>
       <S.DescriptionInput>{label}</S.DescriptionInput>
-      <S.InputText {...otherProps} />
+      <S.InputText errorMessage={errorMessage} {...otherProps} />
+      <S.ErrorMessage>{errorMessage}</S.ErrorMessage>
     </S.InputWrapper>
   )
 }

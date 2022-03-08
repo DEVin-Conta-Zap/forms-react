@@ -1,4 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { InputProps } from '.';
+
+type InputErrorProps = Pick<InputProps, 'errorMessage'>
 
 export const InputWrapper = styled.div`
   display: flex;
@@ -12,14 +15,24 @@ export const DescriptionInput = styled.label`
   color: #212529;
 `
 
-export const InputText = styled.input`
+export const InputText = styled.input<InputErrorProps>`
   height: 24px;
   border-radius: 2px;
   outline: none;
-  border: 1px solid #ced4da;
   padding: 5px 10px;
+  /* border: 1px solid ${({errorMessage}) => errorMessage ? '#ef5350' : '#ced4da'}; */
+
+  ${({errorMessage}) => css`
+      border: 1px solid ${errorMessage ? '#ef5350' : '#ced4da'};
+  `}
 
   &:focus {
     border: 1px solid #006bb7;
   }
+`
+
+export const ErrorMessage = styled.div`
+  color: #ef5350;
+  font-size: 11px;
+  margin-top: 2px;
 `
