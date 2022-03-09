@@ -23,9 +23,9 @@ const Select = ({
 
   return (
     <S.SelectWrapper>
-      <S.DescriptionSelect>Qual a sua cor favorita ?</S.DescriptionSelect>
+      <S.DescriptionSelect>{label}</S.DescriptionSelect>
           <S.List {...otherProps}>
-            <option disabled value="">{description}</option>
+            {description && <option disabled value="">{description}</option>} 
             {options.map(option => 
               <option 
                 key={String(option.value)} 
