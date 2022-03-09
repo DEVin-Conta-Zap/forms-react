@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Avatar from '../../components/Avatar';
 import Input from '../../components/Input';
+import InputDate from '../../components/InputDate';
 import Select from '../../components/Select';
 import Textarea from '../../components/Textarea';
 
@@ -15,7 +16,8 @@ const Form = () => {
 
   const [color, setColor] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('')
+  const [password, setPassword] = useState('');
+  const [dataNascimento, setDataNascimento] = useState(new Date());
   const [erros, setErros] = useState<ErrosProps>({});
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -83,6 +85,11 @@ const Form = () => {
               ]
             }
           /> 
+
+          <InputDate 
+            label="Data de nascimento"
+            onChange={(date:Date) => setDataNascimento(date)}
+            selected={dataNascimento} />
 
 
         <button type='submit'>Enviar</button>

@@ -3,7 +3,7 @@ import { InputHTMLAttributes } from 'react';
 import * as S from './styles'
 
 export type InputProps = {
-  label: string;
+  label?: string;
   errorMessage?: string;
 } & InputHTMLAttributes<HTMLInputElement>
 

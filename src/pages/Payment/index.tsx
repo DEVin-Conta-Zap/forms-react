@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import Input from '../../components/Input';
+import InputDate from '../../components/InputDate';
 import Select from '../../components/Select';
 import * as S from './styles'
 
@@ -24,6 +25,7 @@ const Payment = () => {
 
   const [optionPayment, setOptionPayment] = useState('');
   const [cardNumber, setCardNumber] = useState('');
+  const [expirationDate, setExpirationDate] = useState(new Date());
 
   return (
     <S.Container>
@@ -40,6 +42,14 @@ const Payment = () => {
           value={cardNumber}
           onChange={event => setCardNumber(event.target.value)}
           placeholder="1111 2222 3333 4444"
+        />
+
+        <InputDate 
+          label="Data de expiração"
+          onChange={(date:Date) => setExpirationDate(date)}
+          dateFormat="MM/yyyy"
+          selected={expirationDate}
+          showMonthYearPicker
         />
       </S.Form>
     </S.Container>
