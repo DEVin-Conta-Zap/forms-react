@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Avatar from '../../components/Avatar';
+import Checkbox from '../../components/Checkbox';
 import Input from '../../components/Input';
 import InputDate from '../../components/InputDate';
 import Radio from '../../components/Radio';
@@ -36,6 +37,7 @@ const Form = () => {
   const [password, setPassword] = useState('');
   const [dataNascimento, setDataNascimento] = useState(new Date());
   const [food, setFavoriteFood] = useState('');
+  const [acceptLicence, setAcceptLicence] = useState(false);
   const [erros, setErros] = useState<ErrosProps>({});
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -115,7 +117,10 @@ const Form = () => {
             onChange={event => setFavoriteFood(event.target.value)}
             options={FOODS}
           />
-            
+
+          <Checkbox label="Aceito os termos de licença de uso"
+            checked={acceptLicence}
+            onChange={event => setAcceptLicence(event.target.checked)} />
 
            
 
