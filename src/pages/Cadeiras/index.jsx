@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import React, { useContext, useState } from 'react'
+
+const ProfessorContext = React.createContext();
 
 const UltimaCadeira = () => {
   const [caneta, setCaneta] = useState('Caneta azul');
@@ -7,30 +9,35 @@ const UltimaCadeira = () => {
     <>
       <h1>Olá, sou a última cadeira</h1>
       <br />
-      <ProximaCadeira caneta={caneta}/>
+      <ProfessorContext.Provider value={{ caneta }}>
+        <ProximaCadeira />
+      </ProfessorContext.Provider>
     </>
   )
 }
 
-const ProximaCadeira = ({caneta}) => {
+const ProximaCadeira = () => {
   return (
     <>
       <h1>Olá, sou a próxima cadeira</h1>
-      <TerceiraCadeira caneta={caneta}/>
+      <br />
+      <TerceiraCadeira />
     </>
   )
 }
 
-const TerceiraCadeira = ({caneta}) => {
+const TerceiraCadeira = () => {
   return (
     <>
       <h1>Oi, sou a terceira cadeira</h1>
-      <PrimeiraCadeira caneta={caneta}/>
+      <br />
+      <PrimeiraCadeira />
     </>
   )
 }
 
-const PrimeiraCadeira = ({ caneta }) => {
+const PrimeiraCadeira = () => {
+  const { caneta } = useContext(ProfessorContext);
   return (
     <>
       <h1>Oi, sou a primeira cadeira</h1>
