@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Avatar from '../../components/Avatar';
 import Input from '../../components/Input';
 import InputDate from '../../components/InputDate';
+import Radio from '../../components/Radio';
 import Select from '../../components/Select';
 import Textarea from '../../components/Textarea';
 
@@ -12,12 +13,29 @@ type ErrosProps = {
   password?: string;
 }
 
+const FOODS = [
+  {
+    label: 'Lasanha',
+    value: 'lasanha'
+  },
+  {
+    label: 'Pizza',
+    value: 'pizza'
+  },
+  {
+    label: 'Sushi',
+    value: 'sushi'
+  }
+]
+
+
 const Form = () => {
 
   const [color, setColor] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [dataNascimento, setDataNascimento] = useState(new Date());
+  const [food, setFavoriteFood] = useState('');
   const [erros, setErros] = useState<ErrosProps>({});
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -91,6 +109,15 @@ const Form = () => {
             onChange={(date:Date) => setDataNascimento(date)}
             selected={dataNascimento} />
 
+          <Radio 
+            label='Qual a sua comida favorita ?'
+            name='favoriteFood'
+            onChange={event => setFavoriteFood(event.target.value)}
+            options={FOODS}
+          />
+            
+
+           
 
         <button type='submit'>Enviar</button>
       </S.FormWrapper>
