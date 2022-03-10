@@ -9,6 +9,8 @@ import Textarea from '../../components/Textarea';
 
 import * as S from './styles'
 
+import { formattedValue } from '../../utils/formattedValue'
+
 type ErrosProps = {
   email?: string;
   password?: string;
@@ -39,6 +41,7 @@ const Form = () => {
   const [food, setFavoriteFood] = useState('');
   const [acceptLicence, setAcceptLicence] = useState(false);
   const [erros, setErros] = useState<ErrosProps>({});
+  const [cpf, setCpf] = useState('');
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -123,6 +126,11 @@ const Form = () => {
             onChange={event => setAcceptLicence(event.target.checked)} />
 
            
+           <Input
+            label='CPF'
+            value={cpf}
+            onChange={event => setCpf(formattedValue(event.target.value, 'cpf'))}
+           />
 
         <button type='submit'>Enviar</button>
       </S.FormWrapper>
