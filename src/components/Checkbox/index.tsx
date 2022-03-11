@@ -1,5 +1,5 @@
 
-import { InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import * as S from './styles'
 
 type CheckboxProps = {
@@ -22,4 +22,4 @@ const Checkbox = ({
   )
 }
 
-export default Checkbox;
+export default React.memo(Checkbox);

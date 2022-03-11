@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { ChangeEvent, useCallback, useRef, useState } from 'react';
 import Avatar from '../../components/Avatar';
 import Checkbox from '../../components/Checkbox';
 import Input from '../../components/Input';
@@ -60,6 +60,8 @@ const Form = () => {
 
     console.log("Enviou formulário")
   }
+
+  const handleCheckbox = useCallback((event: ChangeEvent<HTMLInputElement>) => setAcceptLicence(event.target.checked), []);
 
   return (
     <>
@@ -123,7 +125,7 @@ const Form = () => {
 
           <Checkbox label="Aceito os termos de licença de uso"
             checked={acceptLicence}
-            onChange={event => setAcceptLicence(event.target.checked)} />
+            onChange={handleCheckbox} />
 
            
            <Input

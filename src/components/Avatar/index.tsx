@@ -1,3 +1,4 @@
+import React from 'react';
 import * as S from './styles'
 
 
@@ -16,4 +17,4 @@ const Avatar = ({imgUrl, nome}: AvatarProps) => {
   )
 }
 
-export default Avatar;
+export default React.memo(Avatar);

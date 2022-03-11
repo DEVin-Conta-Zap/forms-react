@@ -1,4 +1,4 @@
-import { TextareaHTMLAttributes } from 'react'
+import React, { TextareaHTMLAttributes } from 'react'
 
 import * as S from './styles'
 
@@ -23,4 +23,4 @@ const Textarea = ({
   )
 }
 
-export default Textarea
+export default React.memo(Textarea)

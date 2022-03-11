@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react'
 
 const ProfessorContext = React.createContext();
 
+ProfessorContext.displayName = "Professor";
+
 const UltimaCadeira = () => {
   const [caneta, setCaneta] = useState('Caneta azul');
 
