@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react'
+import { useState } from 'react'
 
 const NavBar = () => {
 
@@ -7,30 +7,27 @@ const NavBar = () => {
   )
 }
 
-const MainPage = () => {
+const MainPage = ({ content }) => {
   return (
     <div style={{ margin: '30px'}}>
       <h3>Página principal</h3>
-      <Content />
+      {content}
     </div>
   )
 }
 
-const Content = () => {
+const Content = ({ message }) => {
   return (
     <div style={{margin: '30px'}}>
-      <Message />
+      {message}
     </div>
   )
 }
 
-const Message = () => {
-  const user = useContext(userContext);
-  return <p>Bem-vindo {user.name} </p>
+const Message = ({ name }) => {
+  return <p>Bem-vindo {name} </p>
 }
 
-
-const userContext = createContext();
 
 const PaginaInicial = () => {
 
@@ -39,9 +36,10 @@ const PaginaInicial = () => {
   return (
     <div>
       <NavBar />
-      <userContext.Provider value={user}>
-        <MainPage />
-      </userContext.Provider>
+      <MainPage content={
+          <Content message={
+            <Message name={user.name} /> } />
+        } />
     </div>
   )
 }
