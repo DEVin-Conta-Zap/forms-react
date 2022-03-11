@@ -7,19 +7,19 @@ const NavBar = () => {
   )
 }
 
-const MainPage = ({ content }) => {
+const MainPage = ({ children }) => {
   return (
     <div style={{ margin: '30px'}}>
       <h3>Página principal</h3>
-      {content}
+      {children}
     </div>
   )
 }
 
-const Content = ({ message }) => {
+const Content = ({ children }) => {
   return (
     <div style={{margin: '30px'}}>
-      {message}
+      {children}
     </div>
   )
 }
@@ -36,10 +36,11 @@ const PaginaInicial = () => {
   return (
     <div>
       <NavBar />
-      <MainPage content={
-          <Content message={
-            <Message name={user.name} /> } />
-        } />
+      <MainPage>
+        <Content>
+          <Message name={user.name}/>
+        </Content>
+      </MainPage>
     </div>
   )
 }
